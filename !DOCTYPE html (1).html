@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wajibat Harian - Slide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-height: 400px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .form-page {
+            display: none; /* Sembunyikan semua halaman secara default */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .form-page.active {
+            display: block; /* Tampilkan halaman yang aktif */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-header {
+            background-color: #e8f4f8;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+        .item-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .item-list li:last-child {
+            border-bottom: none;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            cursor: pointer;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .navigation button:hover {
+            background-color: #2980b9;
+        }
+        #prev-button {
+            display: none;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .info-row label {
+            font-weight: bold;
+        }
+        .info-row input[type="text"] {
+            border: 1px solid #ccc;
+            padding: 8px;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .footer-nav {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.9em;
+        }
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulir Wajibat Harian</h1>
+        <h2>Ala Ikhwanul Muslimin</h2>
+        
+        <div class="info-row">
+            <div>
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama">
+            </div>
+            <div>
+                <label for="tanggal">Tanggal:</label>
+                <input type="text" id="tanggal" readonly>
+            </div>
+        </div>
+
+        <div id="page-1" class="form-page active">
+            <div class="section-header">I. Wajibat Ibadah (Ruhaniyah)</div>
+            <ul class="item-list">
+                <li><span>Shalat Fardhu (Tepat waktu & berjamaah)</span> <input type="checkbox" id="ibadah_fardhu"></li>
+                <li><span>Shalat Sunnah Rawatib</span> <input type="checkbox" id="ibadah_rawatib"></li>
+                <li><span>Shalat Sunnah Tahajjud</span> <input type="checkbox" id="ibadah_tahajjud"></li>
+                <li><span>Shalat Dhuha</span> <input type="checkbox" id="ibadah_dhuha"></li>
+                <li><span>Puasa Sunnah</span> <input type="checkbox" id="ibadah_puasa"></li>
+            </ul>
+        </div>
+
+        <div id="page-2" class="form-page">
+            <div class="section-header">I. Wajibat Ibadah (Lanjutan)</div>
+            <ul class="item-list">
+                <li><span>Tilawah Al-Qur'an (1 juz/hari)</span> <input type="checkbox" id="ibadah_tilawah"></li>
+                <li><span>Dzikir Pagi dan Petang</span> <input type="checkbox" id="ibadah_dzikir"></li>
+                <li><span>Istighfar (minimal 100x)</span> <input type="checkbox" id="ibadah_istighfar"></li>
+            </ul>
+        </div>
+
+        <div id="page-3" class="form-page">
+            <div class="section-header">II. Wajibat Ilmiah dan Intelektual</div>
+            <ul class="item-list">
+                <li><span>Membaca buku Islami</span> <input type="checkbox" id="ilmiah_buku"></li>
+                <li><span>Menghafal Al-Qur'an/Hadits</span> <input type="checkbox" id="ilmiah_hafal"></li>
+                <li><span>Mengikuti Kajian/Ta'lim</span> <input type="checkbox" id="ilmiah_kajian"></li>
+            </ul>
+        </div>
+
+        <div id="page-4" class="form-page">
+            <div class="section-header">III. Wajibat Dakwah dan Sosial</div>
+            <ul class="item-list">
+                <li><span>Silaturahim</span> <input type="checkbox" id="dakwah_silaturahim"></li>
+                <li><span>Khitbah Da'wiyah (dakwah)</span> <input type="checkbox" id="dakwah_khitbah"></li>
+                <li><span>Berbagi atau Sedekah</span> <input type="checkbox" id="dakwah_sedekah"></li>
+                <li><span>Membantu Sesama</span> <input type="checkbox" id="dakwah_bantu"></li>
+            </ul>
+        </div>
+
+        <div id="page-5" class="form-page">
+            <div class="section-header">IV. Wajibat Jasmani (Fisik)</div>
+            <ul class="item-list">
+                <li><span>Olahraga/Gerak Badan (minimal 30 menit)</span> <input type="checkbox" id="jasmani_olahraga"></li>
+                <li><span>Istirahat Cukup</span> <input type="checkbox" id="jasmani_istirahat"></li>
+                <li><span>Menjaga Kebersihan</span> <input type="checkbox" id="jasmani_bersih"></li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <button id="prev-button">Sebelumnya</button>
+            <button id="next-button">Selanjutnya</button>
+        </div>
+        <div class="footer-nav">
+            <span id="page-number">1 dari 5</span>
+        </div>
+        <div class="message">
+            <p>Data tersimpan otomatis di browser Anda.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const formPages = document.querySelectorAll('.form-page');
+            const nextButton = document.getElementById('next-button');
+            const prevButton = document.getElementById('prev-button');
+            const pageNumberSpan = document.getElementById('page-number');
+            const dateInput = document.getElementById('tanggal');
+            const nameInput = document.getElementById('nama');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            let currentPage = 0;
+            const totalPages = formPages.length;
+            const storageKey = 'wajibatDataMultiPage';
+
+            // Menampilkan halaman sesuai nomor
+            const showPage = (pageIndex) => {
+                formPages.forEach((page, index) => {
+                    page.classList.toggle('active', index === pageIndex);
+                });
+                updateNavigationButtons(pageIndex);
+                updatePageNumber(pageIndex);
+            };
+
+            // Mengatur tampilan tombol navigasi
+            const updateNavigationButtons = (pageIndex) => {
+                prevButton.style.display = pageIndex === 0 ? 'none' : 'block';
+                if (pageIndex === totalPages - 1) {
+                    nextButton.textContent = 'Selesai';
+                } else {
+                    nextButton.textContent = 'Selanjutnya';
+                }
+            };
+            
+            // Memperbarui nomor halaman
+            const updatePageNumber = (pageIndex) => {
+                pageNumberSpan.textContent = `${pageIndex + 1} dari ${totalPages}`;
+            };
+
+            // Handler tombol "Selanjutnya"
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    showPage(currentPage);
+                } else {
+                    alert('Formulir selesai! Data sudah tersimpan.');
+                    // Di sini Anda bisa menambahkan fungsi untuk mengirim data ke server
+                    // atau menampilkan ringkasan.
+                }
+            });
+
+            // Handler tombol "Sebelumnya"
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            // --- Fungsi Penyimpanan Data ---
+            const saveToLocalStorage = () => {
+                const data = {};
+                checkboxes.forEach(checkbox => {
+                    data[checkbox.id] = checkbox.checked;
+                });
+                data.nama = nameInput.value;
+                localStorage.setItem(storageKey, JSON.stringify(data));
+            };
+
+            const loadFromLocalStorage = () => {
+                const storedData = localStorage.getItem(storageKey);
+                if (storedData) {
+                    const data = JSON.parse(storedData);
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = data[checkbox.id] || false;
+                    });
+                    nameInput.value = data.nama || '';
+                }
+            };
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', saveToLocalStorage);
+            });
+            nameInput.addEventListener('input', saveToLocalStorage);
+
+            // Inisialisasi
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateInput.value = today.toLocaleDateString('id-ID', options);
+
+            loadFromLocalStorage();
+            showPage(0);
+        });
+    </script>
+</body>
+</html>
